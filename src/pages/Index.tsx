@@ -22,17 +22,6 @@ const Index = () => {
             text="ihavegoodname" 
             className="animate-float"
           />
-          
-          {/* Subtle subtitle */}
-          <div className="mt-8 opacity-60">
-            <div className="text-foreground/60 text-lg font-light tracking-widest">
-              <span className="inline-block animate-pulse">●</span>
-              <span className="mx-4">INTERACTIVE</span>
-              <span className="inline-block animate-pulse animation-delay-1000">●</span>
-              <span className="mx-4">PARTICLES</span>
-              <span className="inline-block animate-pulse animation-delay-2000">●</span>
-            </div>
-          </div>
         </div>
       </div>
       

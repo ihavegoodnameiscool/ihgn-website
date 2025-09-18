@@ -14,31 +14,18 @@ const GlowingText: React.FC<GlowingTextProps> = ({ text, className = '' }) => {
         aria-hidden="true"
       />
       
-      {/* Main text with glow animation */}
+      {/* Main text with subtle glow */}
       <h1 
-        className="relative text-6xl md:text-8xl lg:text-9xl font-bold text-transparent bg-clip-text bg-gradient-neon animate-text-glow select-none"
+        className="relative text-4xl md:text-6xl lg:text-7xl font-bold text-transparent bg-clip-text bg-gradient-neon select-none"
         style={{
-          textShadow: '0 0 30px hsl(180 100% 50% / 0.8), 0 0 60px hsl(180 100% 50% / 0.5)',
+          textShadow: '0 0 10px hsl(180 100% 50% / 0.4), 0 0 20px hsl(180 100% 50% / 0.2)',
           fontFamily: 'system-ui, -apple-system, sans-serif',
-          fontWeight: '900',
-          letterSpacing: '0.05em',
+          fontWeight: '700',
+          letterSpacing: '0.02em',
         }}
       >
         {text}
       </h1>
-      
-      {/* Additional glow layers for depth */}
-      <div 
-        className="absolute inset-0 text-6xl md:text-8xl lg:text-9xl font-bold text-primary opacity-30 blur-sm animate-pulse-glow select-none"
-        style={{
-          fontFamily: 'system-ui, -apple-system, sans-serif',
-          fontWeight: '900',
-          letterSpacing: '0.05em',
-        }}
-        aria-hidden="true"
-      >
-        {text}
-      </div>
     </div>
   );
 };
