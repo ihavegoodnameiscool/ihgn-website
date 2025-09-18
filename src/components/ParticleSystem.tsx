@@ -176,18 +176,6 @@ const ParticleSystem: React.FC = () => {
         />
       ))}
 
-      {/* Mouse glow effect */}
-      <div
-        className="absolute rounded-full pointer-events-none transition-all duration-100"
-        style={{
-          left: mousePosition.x,
-          top: mousePosition.y,
-          width: '200px',
-          height: '200px',
-          background: 'radial-gradient(circle, hsl(180 100% 50% / 0.1) 0%, transparent 70%)',
-          transform: 'translate(-50%, -50%)',
-        }}
-      />
     </div>
   );
 };
