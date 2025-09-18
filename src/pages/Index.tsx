@@ -16,8 +16,8 @@ const Index = () => {
       </div>
       
       {/* Main content */}
-      <div className="relative z-20 flex min-h-screen items-center justify-center">
-        <div className="text-center px-4">
+      <div className="relative z-20 flex min-h-screen items-center justify-center px-4">
+        <div className="text-center w-full max-w-4xl">
           <GlowingText 
             text="ihavegoodname" 
             className="animate-float"

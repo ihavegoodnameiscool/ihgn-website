@@ -60,15 +60,15 @@ const ParticleSystem: React.FC = () => {
     };
   }, []);
 
-  // Track mouse movement
+  // Track mouse movement with immediate response
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
       
-      // Generate mouse particles
-      if (Math.random() < 0.3) {
+      // Generate mouse particles more frequently for smoother trail
+      if (Math.random() < 0.8) {
         setMouseParticles(prev => [
-          ...prev.slice(-20), // Keep only last 20 particles
+          ...prev.slice(-30), // Keep more particles for smoother trail
           generateMouseParticle(e.clientX, e.clientY)
         ]);
       }
@@ -94,7 +94,7 @@ const ParticleSystem: React.FC = () => {
     return () => clearInterval(interval);
   }, [generateParticle]);
 
-  // Animation loop for ambient particles
+  // High-frequency animation loop for smooth particle movement
   useEffect(() => {
     const animate = () => {
       setParticles(prev => prev
@@ -116,10 +116,10 @@ const ParticleSystem: React.FC = () => {
       setMouseParticles(prev => prev
         .map(particle => ({
           ...particle,
-          x: particle.x + particle.vx * 0.98,
-          y: particle.y + particle.vy * 0.98,
-          vx: particle.vx * 0.98,
-          vy: particle.vy * 0.98,
+          x: particle.x + particle.vx * 0.95,
+          y: particle.y + particle.vy * 0.95,
+          vx: particle.vx * 0.95,
+          vy: particle.vy * 0.95,
           life: particle.life + 1,
           opacity: Math.max(0, 1 - (particle.life / particle.maxLife)),
         }))
@@ -127,8 +127,15 @@ const ParticleSystem: React.FC = () => {
       );
     };
 
-    const animationId = setInterval(animate, 16);
-    return () => clearInterval(animationId);
+    // Use requestAnimationFrame for smooth 60fps animation
+    let animationId: number;
+    const animationLoop = () => {
+      animate();
+      animationId = requestAnimationFrame(animationLoop);
+    };
+    animationId = requestAnimationFrame(animationLoop);
+    
+    return () => cancelAnimationFrame(animationId);
   }, []);
 
   return (
